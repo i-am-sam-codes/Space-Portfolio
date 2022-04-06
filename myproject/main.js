@@ -84,3 +84,28 @@ function animate() {
   renderer.render( scene, camera )
 }
 animate()
+
+// Avatar
+
+const samTexture = new THREE.TextureLoader().load('Sam+Char.png');
+
+const sam = new THREE.Mesh( 
+  new THREE.BoxGeometry(3,3,3), 
+  new THREE.MeshBasicMaterial( { map: samTexture } )
+)
+
+scene.add(sam)
+
+// Moon 
+const moonTexture = new THREE.TextureLoader().load('moonmoon.jpg');
+const normalTexture = new THREE.TextureLoader().load('normal.jpeg');
+
+const moon = new THREE.Mesh(
+  new THREE.SphereGeometry(3, 32, 32),
+  new THREE.MeshStandardMaterial( { 
+    map: moonTexture,
+    normalMap: normalTexture
+  })
+)
+scene.add(moon)
+
