@@ -22,3 +22,20 @@ renderer.setSize( window.innerWidth, window.innerHeight );
 camera.position.setZ(30);
 
 renderer.render( scene, camera )
+
+//There are 3 basic steps to creating an object. 
+// #1 Need geometry/vector define the object. THREE.js has a bunch of build in geometrys. 
+const geometry = new THREE.TorusGeometry( 10, 3, 16, 100 )
+// #2 Need to define material to define color or texture. Theres many different materials to chose from with THREE.js material
+const material = new THREE.MeshBasicMaterial( { color: 0xFF6347, wireframe: true } )
+// #3 Create a MESH geometry + material combining them both together
+const torus = new THREE.Mesh( geometry, material )
+//and add MESH to scene 
+scene.add( torus )
+
+//function to call to redender - gameloop
+function animate() {
+  requestAnimationFrame( animate );
+  renderer.render( scene, camera )
+}
+animate()
