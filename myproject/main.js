@@ -67,6 +67,10 @@ function addStar(){
 
 Array(200).fill().forEach(addStar)
 
+//adds background image
+const spaceTexture = new THREE.TextureLoader().load('space.jpg')
+scene.background = spaceTexture;
+
 //function to call to redender - gameloop
 function animate() {
   requestAnimationFrame( animate );
