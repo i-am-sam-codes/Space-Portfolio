@@ -3,6 +3,8 @@ import './style.css'
 import * as THREE from 'three';
 //will allows us to move around the scene with out using our mouse 
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
+import { ShadowMaterial } from 'three';
+import { CameraHelper } from 'three';
 
 const scene = new THREE.Scene();
 
@@ -71,6 +73,22 @@ Array(200).fill().forEach(addStar)
 const spaceTexture = new THREE.TextureLoader().load('space.jpg')
 scene.background = spaceTexture;
 
+//function move camera 
+function moveCamera() {
+  const t = document.body.getBoundingClientRect().top;
+  moon.rotation.x += 0.05;
+  moon.rotation.y += 0.075;
+  moon.rotation.z +- 0.05;
+
+  sam.rotation.y += 0.01;
+  sam.rotation.z += 0.01;
+
+  camera.position.z = t * -0.01;
+  camera.position.x = t * -0.0002;
+  camera.rotation.y = t * -0.0002;
+}
+document.body.onscroll = moveCamera;
+
 //function to call to redender - gameloop
 function animate() {
   requestAnimationFrame( animate );
@@ -109,3 +127,6 @@ const moon = new THREE.Mesh(
 )
 scene.add(moon)
 
+//reposition moon 
+moon.position.z = 30
+moon.position.setX(-10);
